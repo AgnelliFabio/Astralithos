@@ -19,6 +19,7 @@
 <body>
     <?php 
 	include_once('header.php'); 
+    include_once('connect.php'); 
 	?>
     <h1>Filtrer les informations sur les catastrophes naturelles</h1>
     <script src="scripts/script.js"></script>
@@ -51,7 +52,8 @@
     $minTo = isset($_GET['minuteTo']) ? $_GET['minuteTo'] : '';
     
     // Effectuez une requête SQL pour obtenir les données filtrées à partir de votre base de données
-    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE203") or die(mysqli_error($conn));
+    global $servername,$username,$pwdBDD,$dbname;
+    $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
     $requete = "SELECT * FROM tremblement2 WHERE minute >= ? AND  minute <= ?";
     $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
     mysqli_stmt_bind_param($statement, "ii", $minFrom, $minTo) or die(mysqli_error($conn));

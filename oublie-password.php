@@ -17,7 +17,9 @@
 <body>
     <?php 
      session_start(); 
-    include_once('header.php'); ?>
+    include_once('header.php');
+    include_once('connect.php'); 
+     ?>
     <div class="wrapper">
         <div class="card-switch">
             <input type="checkbox" class="toggle">
@@ -39,13 +41,14 @@
                         <button class="flip-card__btn" style="color:#4F505E;" type="submit" name="submit">Modifier</button>
 
                         <?php  
-    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+        global $servername,$username,$pwdBDD,$dbname;
+        $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
     if (isset($_POST['submit'])) {
         // Récupérer la valeur du login depuis l'URL
-        $email = $_POST['mail-r'];
-        $answer = $_POST['security-answer'];
-        $rep = $_POST['security-question'];
+        $email = htmlspecialchars($_POST['mail-r']);
+        $answer = htmlspecialchars($_POST['security-answer']);
+        $rep = htmlspecialchars($_POST['security-question']);
 
         // ... la suite de votre code ..
         $requete = "SELECT numQuest, reponse FROM form WHERE email = ?";
@@ -80,7 +83,8 @@
 
             if (isset($_POST['submit'])) {
 
-                $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+                global $servername,$username,$pwdBDD,$dbname;
+                $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
                 $requete = "UPDATE form SET password = ? WHERE email = ?";
                 $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
                 mysqli_stmt_bind_param($statement, "ss", $newPassCod, $email) or die(mysqli_error($conn));
