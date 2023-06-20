@@ -1,126 +1,168 @@
-body{
-    font-family: poppins;
-}  
+
+body {
+  font-family: 'Poppins', 'sans-serif';
+  margin: 0;
+  padding: 0;
+}
+
+.space-header{
+  padding-top: 8%;
+}
 .pad {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150vh;
-    box-sizing: border-box;
-  }
-  
-  
-  .content-wrapper {
-    display: flex;
-    align-items: center;
-    margin-left: 5%;
-  }
-  
-  .earth {
-    width: 40%; /* Ajustez la taille du gif selon vos besoins */
-  }
-  
-  .text-wrapper {
-    margin-left: 20px; /* Ajustez la marge entre le gif et le texte selon vos besoins */
-  }
-  
-  .accroche {
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 80px;
-    text-align: center; /* Ajout du centrage du texte */
-    margin-right: 10%;
-  }
-  
-  .text-home {
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 40px;
-    text-align: center; /* Ajout du centrage du texte */
-    margin-right: 10%;
-    padding-top: 40px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  .Apropos {
-    margin-top: -50px; /* Modifier la marge supérieure selon vos besoins */
-    margin-bottom: -50px; /* Modifier la marge inférieure selon vos besoins */
-    margin-left: -50px; /* Modifier la marge gauche selon vos besoins */
-    margin-right: -50px; /* Modifier la marge droite selon vos besoins */
-    background-color: #3C4865;
-  }
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+}
 
-  .but{
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 80px;
-    text-align: center; /* Ajout du centrage du texte */
-    padding-top: 100px;
-  }
+.earth {
+  width: 40%;
+  max-width: 600px; /* Limiter la largeur de l'image */
+}
 
-  .text-but{
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 40px;
-    text-align: center; /* Ajout du centrage du texte */
-    padding-top: 50px;
-  }
+.text-wrapper {
+  margin-left: 20px;
+}
 
-
-  .sectionTerre {
-    margin-top: -50px; /* Modifier la marge supérieure selon vos besoins */
-    margin-bottom: -50px; /* Modifier la marge inférieure selon vos besoins */
-    margin-left: -50px; /* Modifier la marge gauche selon vos besoins */
-    margin-right: -50px; /* Modifier la marge droite selon vos besoins */
-  }
+.accroche {
+  color: #F2F6F9;
+  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-weight: 700; /* Met le texte en gras */
+  text-align: center;
   
-  .content-wrapper2 {
-    align-items: center;
-    margin-left: 30%;
-    padding-top: 50px;
-  }
+}
+
+.text-home {
+  color: #F2F6F9;
+  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  padding-top: 20px;
+  text-align: center;
+  margin-right: 50px;
+}
+
+.Apropos {
+  background-color: #3C4865;
+  padding: 50px;
+  text-align: center;
+}
+
+.but {
+  color: #F2F6F9;
+  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-weight: 700; /* Met le texte en gras */
+  text-align: center;
+  margin-top: 120px;
+}
+
+.text-but {
+  color: #F2F6F9;
+  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  padding-top: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.sectionTerre {
+  display: flex;
+
   
-  .tilteearth {
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 80px;
-    text-align: center; /* Ajout du centrage du texte */
-  }
+}
 
-  .earth2 {
-    width: 60%; /* Ajustez la taille du gif selon vos besoins */
-  }
+.content-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
 
-  .text-connect{
-    font-family: Poppins;
-    color: #F2F6F9;
-    font-size: 40px;
-    text-align: center; /* Ajout du centrage du texte */
-    padding-top: 60px;
-    margin-right: 45%;
-  }
+.tilteearth {
+  color: #F2F6F9;
+  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-weight: 700; /* Met le texte en gras */
+  text-align: center;
+  margin-top: 120px;
+}
 
-  .styled {
-    border: 0;
-    line-height: 2.5;
-    padding: 0 20px;
-    font-size: 40px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: #232A3C;
-    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-    margin-left: 500px;
-    margin-top: 100px;
+.earth2 {
+  width: 80%;
+  max-width: 800px; /* Limiter la largeur de l'image */
+  margin-top: -20px;
+}
+
+.text-connect {
+  color: #F2F6F9;
+  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  padding-top: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.styled {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: #232A3C;
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  margin-top: 50px;
+  margin-bottom: 120px;
 }
 
 .styled:hover {
-    background-color: #3C4865;
+  background-color: #3C4865;
 }
 
 .styled:active {
-    box-shadow: inset -2px -2px 3px #9DA4B3, inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: inset -2px -2px 3px #9DA4B3, inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.pad2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+}
+
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  justify-content: space-between; /* Espacement égal entre les trois premières images */
+  gap: 100px; /* Espacement horizontal entre les images */
+}
+
+
+.icon-container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  justify-content: space-between; /* Espacement égal entre les trois premières images */
+  gap: 100px; /* Espacement horizontal entre les images */
+}
+
+.icon img, .icon1 img {
+  width: 250px;
+  height: auto;
 }
