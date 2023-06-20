@@ -75,9 +75,9 @@
   </div>
   <nav>
     <ul>
-      <li><a href="#">Recherche</a></li>
+      <li><a href="filter.php">Recherche</a></li>
       <li><a href="#">Découverte</a></li>
-      <li><a href="#">Terre</a></li>
+      <li><a href="earth.php">Terre</a></li>
       <li><a href="form.php"><img src="assets/img/picto-compte-gris.png" style="width: 30px;
     height: 30px; align-items: center;"></a></li>
     </ul>
