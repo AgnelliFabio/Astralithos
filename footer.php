@@ -23,8 +23,8 @@
     }
 
     .logo {
-        width: 100%;
-        height: 60px;
+        width: 80px;
+        height: 50px;
         margin-right: 10px;
     }
 
@@ -45,12 +45,17 @@
 <body>
 <footer>
     <div class="footer-content">
-        <img src="assets/img/logo-Astralithos-sans-fond.png" alt="Logo" class="logo">
+        <img src="assets/img/logo-Astralithos-rectangle.png" alt="Logo" class="logo">
         <button class="btn-connexion">Connexion</button>
     </div>
     <div class="footer-bottom">
         <p>&copy; <?php echo date("Y"); ?> Votre entreprise. Tous droits réservés.</p>
     </div>
+
+    <form action="destroy_session.php" method="post">
+    <button type="submit" name="destroy">Détruire la session</button>
+</form>
+
 </footer>
 
 </body>

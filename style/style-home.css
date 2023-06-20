@@ -1,142 +1,126 @@
-
-body {
-  font-family: 'Poppins', 'sans-serif';
-  margin: 0;
-  padding: 0;
-}
-
-.space-header{
-  padding-top: 8%;
-}
+body{
+    font-family: poppins;
+}  
 .pad {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.content-wrapper {
-  display: flex;
-  align-items: center;
-  margin-left: 5%;
-}
-
-.earth {
-  width: 40%;
-  max-width: 600px; /* Limiter la largeur de l'image */
-}
-
-.text-wrapper {
-  margin-left: 20px;
-}
-
-.accroche {
-  color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
-  font-weight: 700; /* Met le texte en gras */
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    box-sizing: border-box;
+  }
   
-}
-
-.text-home {
-  color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  padding-top: 20px;
-  text-align: center;
-  margin-right: 50px;
-}
-
-.Apropos {
-  background-color: #3C4865;
-  padding: 50px;
-  text-align: center;
-}
-
-.but {
-  color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
-  font-weight: 700; /* Met le texte en gras */
-  text-align: center;
-  margin-top: 120px;
-}
-
-.text-but {
-  color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  padding-top: 20px;
-  text-align: center;
-  padding-top: 20px;
-}
-
-.sectionTerre {
-  display: flex;
-
   
-}
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+  }
+  
+  .earth {
+    width: 40%; /* Ajustez la taille du gif selon vos besoins */
+  }
+  
+  .text-wrapper {
+    margin-left: 20px; /* Ajustez la marge entre le gif et le texte selon vos besoins */
+  }
+  
+  .accroche {
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 80px;
+    text-align: center; /* Ajout du centrage du texte */
+    margin-right: 10%;
+  }
+  
+  .text-home {
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 40px;
+    text-align: center; /* Ajout du centrage du texte */
+    margin-right: 10%;
+    padding-top: 40px;
+  }
+  
 
-.content-wrapper2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-}
+  .Apropos {
+    margin-top: -50px; /* Modifier la marge supérieure selon vos besoins */
+    margin-bottom: -50px; /* Modifier la marge inférieure selon vos besoins */
+    margin-left: -50px; /* Modifier la marge gauche selon vos besoins */
+    margin-right: -50px; /* Modifier la marge droite selon vos besoins */
+    background-color: #3C4865;
+  }
 
-.tilteearth {
-  color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
-  font-weight: 700; /* Met le texte en gras */
-  text-align: center;
-  margin-top: 120px;
-}
 
-.earth2 {
-  width: 80%;
-  max-width: 800px; /* Limiter la largeur de l'image */
-  margin-top: -20px;
-}
+  .but{
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 80px;
+    text-align: center; /* Ajout du centrage du texte */
+    padding-top: 100px;
+  }
 
-.text-connect {
-  color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  padding-top: 20px;
-  text-align: center;
-  padding-top: 20px;
-}
+  .text-but{
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 40px;
+    text-align: center; /* Ajout du centrage du texte */
+    padding-top: 50px;
+  }
 
-.styled {
-  border: 0;
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  color: #fff;
-  text-shadow: 1px 1px 1px #000;
-  border-radius: 10px;
-  background-color: #232A3C;
-  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-  margin-top: 50px;
-  margin-bottom: 120px;
+
+  .sectionTerre {
+    margin-top: -50px; /* Modifier la marge supérieure selon vos besoins */
+    margin-bottom: -50px; /* Modifier la marge inférieure selon vos besoins */
+    margin-left: -50px; /* Modifier la marge gauche selon vos besoins */
+    margin-right: -50px; /* Modifier la marge droite selon vos besoins */
+  }
+  
+  .content-wrapper2 {
+    align-items: center;
+    margin-left: 30%;
+    padding-top: 50px;
+  }
+  
+  .tilteearth {
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 80px;
+    text-align: center; /* Ajout du centrage du texte */
+  }
+
+  .earth2 {
+    width: 60%; /* Ajustez la taille du gif selon vos besoins */
+  }
+
+  .text-connect{
+    font-family: Poppins;
+    color: #F2F6F9;
+    font-size: 40px;
+    text-align: center; /* Ajout du centrage du texte */
+    padding-top: 60px;
+    margin-right: 45%;
+  }
+
+  .styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #232A3C;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-left: 500px;
+    margin-top: 100px;
 }
 
 .styled:hover {
-  background-color: #3C4865;
+    background-color: #3C4865;
 }
 
 .styled:active {
-  box-shadow: inset -2px -2px 3px #9DA4B3, inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-.pad2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120vh;
+    box-shadow: inset -2px -2px 3px #9DA4B3, inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }

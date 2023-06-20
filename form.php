@@ -30,16 +30,11 @@
                     <div class="flip-card__inner">
                         <div class="flip-card__front">
                             <div class="title">Connexion</div>
-                            <form class="flip-card__form" action="">
+                            <form class="flip-card__form" action="" method="post">
                                 <input class="flip-card__input" name="login" placeholder="Mail" type="email">
                                 <input class="flip-card__input" name="pwd" placeholder="Password" type="password">
-                                <button class="flip-card__btn" style="color:#4F505E;" type="submit">Confirmer</button>
+                                <button class="flip-card__btn" style="color:#4F505E;" type="submit" name="submit-connect">Confirmer</button>
                             </form>
-
-							<?php
-  							if (isset($_GET['msg']))
-   							 {echo "erreur ";echo $_GET['msg']."<br/>";}
-							?>
 
                             <a href="oublie-password.php">Mot de passe oublié ?</a>
                         </div>
@@ -79,7 +74,6 @@
 			$prenom = htmlspecialchars($_POST['prenom']);
             $email = htmlspecialchars($_POST['email']);
 
-			$_SESSION = $_POST['email'];
 
 
 			if ($_POST['pass'] === $_POST['verif']) {
@@ -142,7 +136,9 @@
 			// ... le reste du code pour ajouter l'utilisateur dans la base de données
 			
 			
-			
+			$admin= 'base-user';
+
+            $passEncode = md5($password . '$x21**');
 
 
 
@@ -151,10 +147,10 @@
             echo "Connexion valide.<br/>";
 
             // Requête d'insertion des données
-            $requete = 'INSERT INTO form (nom, prenom, email, password, numQuest, reponse) VALUES (?,?,?,?,?,?)';
+            $requete = 'INSERT INTO form (nom, prenom, email, password, numQuest, reponse,admin) VALUES (?,?,?,?,?,?,?)';
 
             $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-            mysqli_stmt_bind_param($statement,"ssssss",$nom,$prenom,$email,$password,$numquest,$rep) or die(mysqli_error($conn));
+            mysqli_stmt_bind_param($statement,"sssssss",$nom,$prenom,$email,$passEncode,$numquest,$rep,$admin) or die(mysqli_error($conn));
             mysqli_execute($statement) or die(mysqli_error($conn));
 			echo '<p style="color: white;">Ajout de l\'utilisateur '.$nom.'</p>';
 
@@ -169,3 +165,124 @@
     </html>
 
 
+
+
+
+
+
+
+
+
+
+
+<?php
+
+
+$conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+
+
+function estAdmin($pseudo)
+{
+    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+    $requete = "SELECT admin FROM `form` WHERE email = ?";
+    $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($statement, "s", $pseudo) or die(mysqli_error($conn));
+    mysqli_execute($statement) or die(mysqli_error($conn));
+
+    $resultat = mysqli_stmt_get_result($statement);
+    $row = mysqli_fetch_array($resultat, MYSQLI_ASSOC);
+    mysqli_close($conn) or die(mysqli_error($conn));
+
+    return $row['admin'] == "admin";
+}
+
+function loginPassOk($pseudo, $password)
+{
+    $passEncode = md5($password . '$x21**');
+
+    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+    $requete = "SELECT COUNT(*) as nb FROM form WHERE email = ? AND password = ?";
+    $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($statement, "ss", $pseudo, $passEncode) or die(mysqli_error($conn));
+    mysqli_execute($statement) or die(mysqli_error($conn));
+
+    $resultat = mysqli_stmt_get_result($statement);
+    $row = mysqli_fetch_array($resultat, MYSQLI_ASSOC);
+    mysqli_close($conn) or die(mysqli_error($conn));
+
+    $nb = $row['nb'];
+    return $nb == 1;
+}
+
+
+
+
+
+
+
+
+if (isset($_POST['login']))
+{
+$login = htmlspecialchars($_POST['login']);
+$pass = htmlspecialchars($_POST['pwd']);
+$passEncodeConect = md5($pass . '$x21**');
+if (loginPassOk($login,$pass)){
+    echo '<p style="font-size: 24px; color: white;">Vous etes connecter</p>';
+}else{
+    echo '<p style="font-size: 24px; color: white;">Email ou mot de passe incorrect</p>';
+    
+}
+}
+
+
+
+$conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+
+// Préparation de la requête
+$requete = "SELECT admin FROM form WHERE email = ? AND password = ?";
+$statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+
+// Liaison des paramètres à la requête préparée
+mysqli_stmt_bind_param($statement, "ss", $login,$passEncodeConect ) or die(mysqli_error($conn));
+
+// Exécution de la requête
+mysqli_execute($statement) or die(mysqli_error($conn));
+
+// Récupération du résultat de la requête
+$resultat = mysqli_stmt_get_result($statement);
+
+// Vérification du résultat
+if (mysqli_num_rows($resultat) > 0) {
+    // Récupération de la valeur de la colonne "admin"
+    $row = mysqli_fetch_assoc($resultat);
+    $statut = $row['admin'];
+} else {
+    // Aucune correspondance trouvée, la variable $statut aura une valeur par défaut
+    $statut = "";
+}
+
+
+mysqli_close($conn) or die(mysqli_error($conn));
+
+// Utilisation de la variable $statut dans votre code
+// ...
+
+
+
+
+if ($statut === 'admin'){
+    $_SESSION['admin'] = true;
+    echo 'ca marche la vie de ma mere';
+    echo '<meta http-equiv="refresh" content="2;admin.php">';
+}else{
+    $_SESSION['user'] = true;
+    
+}
+
+
+
+
+?>
+
+</body>
+</html>
