@@ -23,8 +23,8 @@
     }
 
     .logo {
-        width: 80px;
-        height: 50px;
+        width: 100%;
+        height: 60px;
         margin-right: 10px;
     }
 
@@ -45,7 +45,7 @@
 <body>
 <footer>
     <div class="footer-content">
-        <img src="assets/img/logo-Astralithos-rectangle.png" alt="Logo" class="logo">
+        <img src="assets/img/logo-Astralithos-sans-fond.png" alt="Logo" class="logo">
         <button class="btn-connexion">Connexion</button>
     </div>
     <div class="footer-bottom">
