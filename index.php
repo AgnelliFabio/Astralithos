@@ -21,6 +21,16 @@
     background: url('assets/img/fondparallax.jpg') fixed 50%;
     background-size: cover;
     } 
+
+    @font-face {
+      font-family: 'SphereFez';
+      src: url('assets/font/SphereFez-Yz5g4.otf') format('opentype');
+    }
+
+    body {
+      font-family: 'SphereFez', sans-serif;
+    }
+
     </style> 
 
 </head>
@@ -39,8 +49,8 @@
                 <img src="assets/img/earth.gif" alt="Terre en rotation" class="earth">
                   <div class="text-wrapper">
         
-            <div class="accroche">Phrase d'accroche / Citation</div>
-          <div class="text-home">Chaque année, des centaines de catastrophes naturelles se produisent, ayant plus ou moins d'impact sur notre vie. Bien que l'humain ait réussi à se développer, la nature reste celle qui choisit.</div>
+            <div class="accroche">Phrase d'accroche</div>
+          <div class="text-home">"Face à la puissance implacable de la nature, l'humanité reste humble devant les caprices du monde naturel. Chaque année, des centaines de catastrophes nous rappellent notre fragilité. Malgré nos avancées, la nature garde toujours le dernier mot, nous invitant à repenser notre place dans l'équilibre délicat de notre planète."</div>
         </div>
       </div>
     </div>
@@ -48,8 +58,8 @@
 </section>
 
   <section class="flex-container Apropos">
-    <div class="but">BUT DU SITE</div>
-    <div class="text-but">“Nom du site” est un site qui répertorie toutes les catastrophes naturelles <br> que la Terre a subi ces XX dernières années. Histoire et à propos...</div>
+    <div class="but">À PROPOS</div>
+    <div class="text-but">"ASTRALITHOS" est bien plus qu'un simple site, c'est une véritable encyclopédie des catastrophes naturelles qui ont marqué notre Terre au cours des dernières décennies. Plongez dans l'histoire fascinante de ces événements dévastateurs et découvrez les récits captivants qui se cachent derrière chaque tragédie. Des ouragans dévastateurs aux séismes destructeurs, en passant par les éruptions volcaniques spectaculaires, "ASTRALITHOS" vous offre un voyage au cœur des forces impressionnantes de la nature. Explorez les récits poignants, les statistiques alarmantes et les leçons précieuses que ces catastrophes nous ont enseignées. Préparez-vous à être émerveillé, ému et éclairé en plongeant dans l'univers captivant d'ASTRALITHOS, où la fascination pour les catastrophes naturelles rencontre la quête de connaissances et la sensibilisation à notre fragile existence sur cette belle planète.</div>
     <br>
     <br>
     <br>
@@ -57,15 +67,17 @@
   
 
   <div class="icon-container">
-    <div class="icon"><img src="assets/img/flood-icon.png"></div>
-    <div class="icon"><img src="assets/img/tsunami-icon.png"></div>
-    <div class="icon"><img src="assets/img/tornado-icon.png"></div>
+    <a href="#"><div class="icon"><img src="assets/img/volcan.png"></div></a>
+    <a href="#"><div class="icon"><img src="assets/img/tsunami-icon.png"></div></a>
+    <a href="#"><div class="icon"><img src="assets/img/tornado-icon.png"></div></a>
   </div>
 
   <div class="icon-container2">
-    <div class="icon"><img src="assets/img/meteor-icon.png"></div>
-    <div class="icon"><img src="assets/img/earthquake-icon.png"></div>
+    <a href="#"><div class="icon"><img src="assets/img/meteor-icon.png"></div></a>
+    <a href="#"><div class="icon"><img src="assets/img/earthquake-icon.png"></div></a>
   </div>
+
+  <a href="earth.php"> <button class="favorite styled2" type="button">Découvrir</button></a>
 
   </section>
 
@@ -81,7 +93,9 @@
                   <div class="content-wrapper2">
                     <img src="assets/img/earth.gif" alt="Terre en rotation" class="earth2">
                       <div class="text-connect">Connectez-vous pour accéder à la section "Terre"</div>
-                        <button class="favorite styled" type="button">Connexion</button>
+                      <a href="form.php"> <button class="favorite styled2" type="button">Se connecter</button></a>
+
+                      
                         
       </div>
     </div>

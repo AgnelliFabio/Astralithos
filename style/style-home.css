@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Poppins', 'sans-serif';
+  font-family: 'SphereFez', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -40,7 +40,7 @@ body {
 
 .accroche {
   color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-size: 260%; /* Utiliser des unités relatives pour le texte */
   font-weight: 700; /* Met le texte en gras */
   text-align: center;
   
@@ -48,8 +48,9 @@ body {
 
 .text-home {
   color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  padding-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 130%; /* Utiliser des unités relatives pour le texte */
+  padding-top: 50px;
   text-align: center;
   margin-right: 50px;
 }
@@ -62,7 +63,7 @@ body {
 
 .but {
   color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-size: 260%; /* Utiliser des unités relatives pour le texte */
   font-weight: 700; /* Met le texte en gras */
   text-align: center;
   margin-top: 120px;
@@ -70,10 +71,10 @@ body {
 
 .text-but {
   color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
-  padding-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 130%; /* Utiliser des unités relatives pour le texte */
   text-align: center;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .sectionTerre {
@@ -86,29 +87,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 .tilteearth {
   color: #F2F6F9;
-  font-size: 300%; /* Utiliser des unités relatives pour le texte */
+  font-size: 260%; /* Utiliser des unités relatives pour le texte */
   font-weight: 700; /* Met le texte en gras */
   text-align: center;
-  margin-top: 120px;
+  margin-top: 0px;
 }
 
 .earth2 {
-  width: 80%;
+  width: 100%;
   max-width: 800px; /* Limiter la largeur de l'image */
   margin-top: -20px;
 }
 
 .text-connect {
   color: #F2F6F9;
-  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  font-family: 'Poppins', sans-serif;
+  font-size: 130%; /* Utiliser des unités relatives pour le texte */
   padding-top: 20px;
   text-align: center;
-  padding-top: 20px;
 }
 
 .styled {
@@ -123,7 +124,7 @@ body {
   background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
   margin-top: 50px;
-  margin-bottom: 120px;
+  margin-bottom: 0px;
 }
 
 .styled:hover {
@@ -165,4 +166,41 @@ body {
 .icon img, .icon1 img {
   width: 250px;
   height: auto;
+  border-radius: 37px; /* Ajout du bord arrondi */
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); /* Ajout de l'ombre avec un effet diffusé */
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+}
+
+.icon:hover {
+  transform: scale(0.88);
+}
+
+
+
+.styled2 {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 150%; /* Utiliser des unités relatives pour le texte */
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: #232A3C;
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.styled2:hover {
+  background-color: #3C4865;
+}
+
+.styled2:active {
+  box-shadow: inset -2px -2px 3px #9DA4B3, inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
