@@ -18,6 +18,7 @@
 <body>
     <?php 
 	include_once('header.php'); 
+    include_once('connect.php'); 
 	?>
 
     <section class="fond-etoiles-form">
@@ -113,7 +114,8 @@
 			
 			function existeEmail($email)
 			{
-				$conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+                global $servername,$username,$pwdBDD,$dbname;
+				$conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 				$requete = "SELECT email FROM form WHERE email = ?";
 				$statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
 				mysqli_stmt_bind_param($statement, "s", $email) or die(mysqli_error($conn));
@@ -143,7 +145,8 @@
 
 
             // Connexion à la base de données
-            $conn=mysqli_connect("localhost:8889", "root","root","SAE") or die("Connexion non possible! <br/>". mysqli_connect_error());
+            global $servername,$username,$pwdBDD,$dbname;
+            $conn = mysqli_connect($servername, $username,$pwdBDD, $dbname) or die(mysqli_error($conn));
             echo "Connexion valide.<br/>";
 
             // Requête d'insertion des données
@@ -177,13 +180,14 @@
 
 <?php
 
-
-$conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+global $servername,$username,$pwdBDD,$dbname;
+$conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
 
 function estAdmin($pseudo)
 {
-    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+    global $servername,$username,$pwdBDD,$dbname;
+    $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
     $requete = "SELECT admin FROM `form` WHERE email = ?";
     $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
     mysqli_stmt_bind_param($statement, "s", $pseudo) or die(mysqli_error($conn));
@@ -196,47 +200,46 @@ function estAdmin($pseudo)
     return $row['admin'] == "admin";
 }
 
-function loginPassOk($pseudo, $password)
-{
-    $passEncode = md5($password . '$x21**');
 
-    $conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+function loginPassOk($login, $password)
+{
+    global $servername, $username, $pwdBDD, $dbname;
+    $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
+
+    $hashedPassword = md5($password . '$x21**');
     $requete = "SELECT COUNT(*) as nb FROM form WHERE email = ? AND password = ?";
     $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-    mysqli_stmt_bind_param($statement, "ss", $pseudo, $passEncode) or die(mysqli_error($conn));
-    mysqli_execute($statement) or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($statement, "ss", $login, $hashedPassword) or die(mysqli_error($conn));
+    mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
     $resultat = mysqli_stmt_get_result($statement);
     $row = mysqli_fetch_array($resultat, MYSQLI_ASSOC);
+    mysqli_stmt_close($statement);
     mysqli_close($conn) or die(mysqli_error($conn));
 
     $nb = $row['nb'];
     return $nb == 1;
 }
 
+if (isset($_POST['login']) && isset($_POST['pwd'])) {
+    $login = htmlspecialchars($_POST['login']);
+    $password = htmlspecialchars($_POST['pwd']);
 
-
-
-
-
-
-
-if (isset($_POST['login']))
-{
-$login = htmlspecialchars($_POST['login']);
-$pass = htmlspecialchars($_POST['pwd']);
-$passEncodeConect = md5($pass . '$x21**');
-if (loginPassOk($login,$pass)){
-    echo '<p style="font-size: 24px; color: white;">Vous etes connecter</p>';
-}else{
-    echo '<p style="font-size: 24px; color: white;">Email ou mot de passe incorrect</p>';
-    
-}
+    if (loginPassOk($login, $password)) {
+        echo '<p style="font-size: 24px; color: white;">Vous êtes connecté</p>';
+        $_SESSION['admin'] = true;
+        echo '<meta http-equiv="refresh" content="2;admin.php">';
+    } else {
+        echo '<p style="font-size: 24px; color: white;">Email ou mot de passe incorrect</p>';
+        $_SESSION['user'] = true;
+    }
 }
 
 
 
-$conn = mysqli_connect("localhost:8889", "root", "root", "SAE") or die(mysqli_error($conn));
+
+global $servername,$username,$pwdBDD,$dbname;
+$conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
 // Préparation de la requête
 $requete = "SELECT admin FROM form WHERE email = ? AND password = ?";
@@ -267,17 +270,6 @@ mysqli_close($conn) or die(mysqli_error($conn));
 // Utilisation de la variable $statut dans votre code
 // ...
 
-
-
-
-if ($statut === 'admin'){
-    $_SESSION['admin'] = true;
-    echo 'ca marche la vie de ma mere';
-    echo '<meta http-equiv="refresh" content="2;admin.php">';
-}else{
-    $_SESSION['user'] = true;
-    
-}
 
 
 
