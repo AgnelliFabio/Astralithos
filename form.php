@@ -161,11 +161,6 @@
         }
     ?>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<?php 
-	include_once('footer.php'); 
-	?>
-    </body>
-    </html>
 
 
 
@@ -273,6 +268,8 @@ mysqli_close($conn) or die(mysqli_error($conn));
 
 
 
+
+	include_once('footer.php'); 
 
 ?>
 

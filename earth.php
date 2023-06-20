@@ -9,7 +9,8 @@
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
     <script>
         // Set your Cesium ion access token here
-        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NmJlOTBmZS0zMDQ4LTQyNmUtYTViOS04OTEyZDdmZThmMDciLCJpZCI6MTQ4MDA3LCJpYXQiOjE2ODcyNDI5ODR9.5BzgewFG_qqt70bHlei4_AtSAPYm7LZ0Gr32eo_tS3I';
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0YTc5MWU1Zi1kMmQ0LTRmNTMtOGQ4MS0xOWIzZjVhYjhmOGUiLCJpZCI6MTQ4MDI3LCJpYXQiOjE2ODcyNDc3ODR9.qTEg_eM3zVfQ3qdEDmeUUoKVnSH8j_iBzyqjvTPFjhc';
+
 
         // Create a Cesium viewer
         var viewer = new Cesium.Viewer('cesiumContainer', {
@@ -35,7 +36,8 @@
 
         </script>
         <?php
-            include_once 'sql_usage/SQLconnection.php';
+
+            include_once 'connect.php';
             $requete = "SELECT * FROM earthquake";
             $resultat = mysqli_query($conn, $requete);
             if (!$resultat) {
@@ -61,6 +63,36 @@
 </html>
 
 <style>
+
+.cesium-touch-navigation-help cesium-navigation-help-instructions{
+    display:none;
+}
+    body {
+    margin: 0;
+    padding: 0;
+}
+
+#cesiumContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#cesiumContainer canvas {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.cesium-viewer-selectionIndicatorContainer,
+.cesium-viewer-bottom,
+.cesium-viewer-infoBoxContainer,
+.cesium-viewer-toolbar,
+.cesium-button {
+    display: none;
+}
+
+
         #cesiumContainer {
             width: 100%;
             height: 100%;
