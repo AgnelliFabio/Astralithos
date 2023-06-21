@@ -1,121 +1,112 @@
+<?php 
+    session_start();
+	include_once('header.php'); 
+    include_once('connect.php'); 
+	?>
+    
 <!DOCTYPE html>
 <html>
 <head>
     <title>Cesium Map</title>
+
+    <style>
+body {
+            font-family: poppins;
+            background-image: url("assets/img/fond-etoile-form.jpg");
+            background-size: cover;
+        }
+
+        .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .btn-earth {
+        display: flex;
+        align-items: center;
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 17px;
+        padding: 0.8em 1.3em 0.8em 0.9em;
+        color: white;
+        background: #ad5389;
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        border: none;
+        letter-spacing: 0.05em;
+        border-radius: 16px;
+    }
+
+    .btn-earth img {
+        margin-right: 3px;
+        transform: rotate(0deg);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .btn-earth span {
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .btn-earth:hover img {
+        transform: translateX(5px) rotate(90deg);
+    }
+
+    .btn-earth:hover span {
+        transform: translateX(7px);
+    }
+
+
+
+</style>
     
 </head>
 <body>
-    <div id="cesiumContainer"></div>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.84/Build/Cesium/Cesium.js"></script>
-    <script>
-        // Set your Cesium ion access token here
-        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0YTc5MWU1Zi1kMmQ0LTRmNTMtOGQ4MS0xOWIzZjVhYjhmOGUiLCJpZCI6MTQ4MDI3LCJpYXQiOjE2ODcyNDc3ODR9.qTEg_eM3zVfQ3qdEDmeUUoKVnSH8j_iBzyqjvTPFjhc';
+<br>
+<form method="post" action="">
+    <div class="btn-container">
+        <button name="btn-1" class="btn-earth">
+        <img src="assets/img/tremblement.png" alt="Votre Image" width="24" height="24">
+
+            <span>Tremblement de terre</span>
+        </button>
+
+        <button name="btn-2" class="btn-earth">
+        <img src="assets/img/meteorite.png" alt="Votre Image" width="24" height="24">
+            <span>Météorite</span>
+        </button>
+
+        <button name="btn-3" class="btn-earth">
+        <img src="assets/img/cyclone.png" alt="Votre Image" width="24" height="24">
+            <span>Tornade</span>
+        </button>
+    </div>
+</form>
 
 
-        // Create a Cesium viewer
-        var viewer = new Cesium.Viewer('cesiumContainer', {
-            shouldAnimate: true,
-            animation: false,
-            timeline: false,
-        });
+<?php 
+if (isset($_POST['btn-1'])) {
+    include_once('earth-1.php'); 
+}
 
-        // Function to add a point at a given latitude and longitude
-        function addPoint(latitude, longitude, type, size) {
-            
-            viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-                billboard: {
-                    image: type,
-                    scale: size,
-                    // color: Cesium.Color.RED
-                }
-            });
+if (isset($_POST['btn-2'])) {
+    include_once('earth-2.php'); 
+}
 
-        }
+if (isset($_POST['btn-3'])) {
+    include_once('earth-3.php'); 
+}
+?>
 
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br>
+<?php
+include_once('footer.php');
+?>
 
-        </script>
-        <?php
-
-            include_once 'connect.php';
-            $requete = "SELECT * FROM earthquake";
-            $resultat = mysqli_query($conn, $requete);
-            if (!$resultat) {
-                die("Erreur lors de l'exécution de la requête: " . mysqli_error($conn));
-            }
-            while ($row = mysqli_fetch_assoc($resultat)) {
-                if ($row['impact_magnitude'] >1){
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'ico.png', 0.05);</script>";
-                }
-
-            else{
-                echo"<script>addPoint($row[location_latitude], $row[location_longitude], 'ico2.png', 0.02);</script>";
-
-                }
-            }
-
-        ?>
-    <script>
-        viewer.zoomTo(viewer.entities);
-    </script>
 
 </body>
 </html>
-
-<style>
-
-.cesium-touch-navigation-help cesium-navigation-help-instructions{
-    display:none;
-}
-    body {
-    margin: 0;
-    padding: 0;
-}
-
-#cesiumContainer {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-#cesiumContainer canvas {
-    height: 100%;
-    width: 100%;
-    display: block;
-}
-
-.cesium-viewer-selectionIndicatorContainer,
-.cesium-viewer-bottom,
-.cesium-viewer-infoBoxContainer,
-.cesium-viewer-toolbar,
-.cesium-button {
-    display: none;
-}
-
-
-        #cesiumContainer {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #cesiumContainer canvas{
-            height: 600px;
-        }
-        #cesiumContainer .cesium-viewer-selectionIndicatorContainer{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-bottom{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-infoBoxContainer{
-            display: none;
-        }
-        #cesiumContainer .cesium-viewer-toolbar{
-            display: none;
-        }
-        #cesiumContainer .cesium-button{
-            display: none;
-        }
-
-</style>
