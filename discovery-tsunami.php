@@ -25,28 +25,26 @@
     </style> 
 
 <section class="flex-container background">
-    <div class="titre">LES ÉRUPTIONS VOLCANIQUES</div>
+    <div class="titre">LES TSUNAMIS</div>
     <br><br>
-    <img src="assets/img/volcan.jpg" class="image-mea">
+    <img src="assets/img/tsunami.jpg" class="image-mea">
 
 
     <!--Origines et causes des éruptions volcaniques-->
     <div class="def">
-    <p class="container">Spécificité du risque volcanique :</p>
+    <p class="container">Origines et causes des Tsunamis :</p>
 
-Les éruptions volcaniques sont des événements géologiques au cours desquels du magma, des gaz et des matériaux solides sont expulsés depuis un volcan vers la surface de la Terre. Elles sont causées par la pression du magma qui dépasse la résistance des roches volcaniques, permettant ainsi au magma de s'échapper. Les éruptions peuvent être soit effusives, avec un écoulement de lave fluide, soit explosives, avec une libération soudaine de gaz et de matériaux solides.<br><br>
+    Les tsunamis, également connus sous le nom de raz-de-marée, sont des phénomènes dévastateurs qui se produisent dans les zones côtières en raison de perturbations soudaines dans l'océan ou la mer. Ces événements catastrophiques ont des origines et des causes spécifiques qui peuvent engendrer des vagues géantes capables de causer des destructions massives. Parmi les principales origines des tsunamis figurent les séismes sous-marins, la subduction des plaques tectoniques, les glissements de terrain sous-marins et l'activité volcanique.<br><br>
 
-Les éruptions volcaniques sont des phénomènes très singuliers : alors qu’un séisme ne dure que quelques minutes, un cyclone quelques jours, certaines éruptions volcaniques peuvent durer des années et impacter de manière durable un territoire. Les volcans sont en outre capables de produire des aléas très différents et susceptibles de changer brusquement en fonction du type d'édifice et/ou d'éruptions.<br><br>
+Les séismes sous-marins sont la principale cause des tsunamis. Lorsque les plaques tectoniques se déplacent brusquement le long d'une faille sous-marine, cela entraîne un puissant séisme. Ce mouvement rapide génère une onde de choc qui se propage dans l'eau et peut se transformer en tsunami lorsqu'elle atteint les zones côtières.<br><br>
 
-Les périodes de repos plus ou moins longues entre deux éruptions (parfois de plusieurs siècles) empêchent parfois le développement d’une culture du risque adéquate.
+La subduction des plaques tectoniques est une autre cause fréquente des tsunamis. Lorsque la plaque tectonique océanique plonge sous une plaque continentale ou une autre plaque océanique, le mouvement brusque vers le bas perturbe l'eau au-dessus, générant ainsi un tsunami.<br><br>
 
-Le risque volcanique est ainsi propre à un édifice donné, et varie dans le temps et dans l’espace : chaque volcan est donc spécifique.<br><br>
+Les glissements de terrain sous-marins peuvent également provoquer des tsunamis dévastateurs. Lorsqu'une grande quantité de sédiments, de roches ou de débris se détache et tombe brusquement dans l'océan, une onde de choc se propage à travers l'eau, créant ainsi un tsunami qui se propage dans toutes les directions.<br><br>
 
-Les volcans se forment lorsque du magma (un mélange de roches en fusion la lave, de gaz et d’éléments solides) est émis à la surface de la Terre. On parle alors d’éruption volcanique.
+L'activité volcanique sous-marine peut également être à l'origine de tsunamis. Lorsqu'un volcan entre en éruption sous l'eau, cela peut provoquer des glissements de terrain, des explosions et des perturbations significatives de l'eau, donnant ainsi naissance à un tsunami.<br><br>
 
-La plupart des volcans forment des reliefs généralement coniques, plus ou moins pentus, qui se construisent par accumulation successive de lave et/ou de matériel bréchique autour du point de sortie principal.
-
-Les volcans peuvent être terrestres ou sous-marins et leur répartition à la surface du globe n’est pas aléatoire : elle est régie par le principe général de la tectonique des plaques et des points chauds.</div>
+La détection précoce et l'alerte aux tsunamis jouent un rôle crucial dans la prévention des pertes humaines et des dégâts matériels. Des systèmes de surveillance et des réseaux de capteurs sont utilisés pour détecter les séismes sous-marins et les mouvements de l'eau, permettant ainsi de déclencher des alertes et de faciliter l'évacuation des zones à risque lorsque des tsunamis menaçants sont détectés.</div>
 
 
 <!--Spécificité du risque volcanique-->
