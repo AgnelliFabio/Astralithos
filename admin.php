@@ -111,6 +111,9 @@ if (isset($_POST ['filtre'])){
     if (($_POST['filtre']) == 'ajout-admin') {
         include_once('ajout-admin.php'); 
     }
+    if (($_POST['filtre']) == 'delete-user') {
+        include_once('delete-user.php'); 
+    }
 }
 if (isset($_POST['btn-1'])) {
     include_once('ajout-admin.php'); 
@@ -118,7 +121,7 @@ if (isset($_POST['btn-1'])) {
 }
 
 if (isset($_POST['btn-2'])) {
-    include_once('earth-2.php'); 
+    include_once('delete-user.php'); 
 }
 
 if (isset($_POST['btn-3'])) {
