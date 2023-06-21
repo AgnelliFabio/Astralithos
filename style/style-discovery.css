@@ -1,77 +1,65 @@
 body {
-    font-family: 'SphereFez', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .space-header{
-    padding-top: 8%;
-  }
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
 
-  .pad {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .flex-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
 
-  
-/*bouton*/ 
-  button {
-    display: flex;
-    align-items: center;
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 17px;
-    padding: 0.8em 1.3em 0.8em 0.9em;
-    color: white;
-    background: #ad5389;
-    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    border: none;
-    letter-spacing: 0.05em;
-    border-radius: 16px;
-  }
-  
-  button svg {
-    margin-right: 3px;
-    transform: rotate(30deg);
-    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-  }
-  
-  button span {
-    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-  }
-  
-  button:hover svg {
-    transform: translateX(5px) rotate(90deg);
-  }
-  
-  button:hover span {
-    transform: translateX(7px);
-  }
+.background {
+  background-color: #3C4865;
+  padding: 10px;
+  text-align: center;
+}
+
+.titre {
+  color: #F2F6F9;
+  font-size: 250%;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.def {
+  color: #F2F6F9;
+  font-family: 'Poppins', sans-serif;
+  font-size: 100%;
+  font-weight: 200;
+  text-align: justify;
+  padding-top: 40px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  gap: 25px; /* Espacement horizontal entre les images */
+}
+
+.images-roche,
+.images-souffre {
+  width: 35%;
+  border-radius: 37px;
+  height: auto;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
 
 
-
-/*bouton JS*/
-.btn {
-    padding: 10px 20px;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn:not(:last-child) {
-    margin-right: 10px;
-  }
-  
-  #content {
-    margin-top: 20px;
-  }
+.image-volcan{
+  width: 45%;
+  border-radius: 37px;
+  height: auto;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
