@@ -81,7 +81,7 @@
 			if ($_POST['pass'] === $_POST['verif']) {
 				$password = htmlspecialchars($_POST['pass']);
 			} else {
-				echo '<p style="color: white;">Vérification du mot de passe incorrect</p>';
+				echo '<script> alert("Vérification du mots de passe incorect");</script>';
 				
 				exit; 
 			}

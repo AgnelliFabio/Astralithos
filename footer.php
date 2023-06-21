@@ -7,7 +7,7 @@
     <style>
     /* CSS pour le footer */
     footer {
-        background-color: #374967;
+        background-color: #222A3C;
         color: white;
         padding: 20px;
         display: flex;

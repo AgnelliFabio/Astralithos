@@ -19,13 +19,14 @@
         if ($currentPage === "earth") echo "<style>.terre{color:#A17113;}</style>";
         if ($currentPage === "filter") echo "<style>.filter{color:#A17113;}</style>";
         if ($currentPage === "discovery") echo "<style>.discovery{color:#A17113;}</style>";
+        if ($currentPage === "admin") echo "<style>.admin{color:#A17113;}</style>";
         if ($currentPage === "form" ) $imgPicto='assets/img/picto-compte.png';
         if ($currentPage === "oublie-password" ) $imgPicto='assets/img/picto-compte.png';
     ?>
 
     <style>
         header {
-            background-color: #384967;
+            background-color: #222A3C;
             border-radius: 100px;
             margin-top: 20px;
             margin-left: 20px;
@@ -124,6 +125,14 @@
                 <div id="main-anim"> <li><a href="filter.php" class="filter">Recherche</a></li> </div>
                 <div id="main-anim"> <li><a href="discovery.php" class="discovery" id="main-anim">Découverte</a></li> </div>
                 <div id="main-anim"> <li><a href="earth.php" class="terre" id="main-anim">Terre</a></li> </div>
+                <?php 
+                if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+                  echo '<div id="main-anim"> <li><a href="admin.php" class="admin" id="main-anim">Admin</a></li> </div>';
+
+                }else{
+                
+                }
+                ?>
                 <li>
                     <a href="form.php">
                       <div class="form-old" id="main-anim"></div>
