@@ -66,7 +66,7 @@
 
 #main-anim{
 
-  transition: transform 0.3s;
+  transition: transform 0.5s;
 }
 
 #main-anim:hover{
@@ -126,7 +126,7 @@
                 <div id="main-anim"> <li><a href="earth.php" class="terre" id="main-anim">Terre</a></li> </div>
                 <li>
                     <a href="form.php">
-                      <div class="form-old"></div>
+                      <div class="form-old" id="main-anim"></div>
                     </a>
                 </li>
             </ul>
