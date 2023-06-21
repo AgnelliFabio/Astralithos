@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
 
@@ -14,7 +13,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
 	?>
 
 <!DOCTYPE html>
-<html lang="efr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
