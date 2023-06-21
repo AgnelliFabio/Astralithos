@@ -92,8 +92,8 @@ body {
         </button>
 
         <button name="btn-4" class="btn-earth">
-        <img src="assets/img/tsunami.png" alt="Votre Image" width="24" height="24">
-            <span>Tsunami</span>
+        <img src="assets/img/modif.png" alt="Votre Image" width="24" height="24">
+            <span>Modifier données utilisateur</span>
         </button>
 
         <button name="btn-5" class="btn-earth">
@@ -114,6 +114,9 @@ if (isset($_POST ['filtre'])){
     if (($_POST['filtre']) == 'delete-user') {
         include_once('delete-user.php'); 
     }
+    if (($_POST['filtre']) == 'modif-user') {
+        include_once('modif-user.php'); 
+    }
 }
 if (isset($_POST['btn-1'])) {
     include_once('ajout-admin.php'); 
@@ -129,7 +132,7 @@ if (isset($_POST['btn-3'])) {
 }
 
 if (isset($_POST['btn-4'])) {
-    include_once('earth-4.php'); 
+    include_once('modif-user.php'); 
 }
 
 if (isset($_POST['btn-5'])) {

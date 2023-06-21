@@ -132,7 +132,9 @@
 			if (existeEmail($email)) {
 				echo '<p style="color: white;">Le mail '.$nom.' est déja utiliser</p>';
 				exit;
-			}
+			}else{
+
+            }
 			
 			$admin= 'base-user';
 
@@ -248,14 +250,42 @@ mysqli_close($conn) or die(mysqli_error($conn));
 echo $statut;
 
 
+    if (isset($_POST['submit-connect'])) {
+
+        global $servername,$username,$pwdBDD,$dbname;
+                      $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
+                      $requete = 'SELECT nom FROM form WHERE email = ?'; 
+                      $statement =mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+                      mysqli_stmt_bind_param($statement, "s", $login) or die(mysqli_error($conn));
+                      mysqli_execute($statement) or die(mysqli_error($conn));
+                      $resultat=mysqli_stmt_get_result($statement);
+
+                      if ($resultat) {
+                        while ($row = mysqli_fetch_assoc($resultat)) {
+                            $nomID = $row['nom'];
+                        }
+                    }
+
+    $_SESSION['loginID']= $nomID;
+    } else {
+    
+    }
 
     if ($statut == 'admin') {
         $_SESSION['admin'] = true;
         echo '<meta http-equiv="refresh" content="2;admin.php">';
     } else {
-        $_SESSION['user'] = true;
+        
     }
     
+
+    if ($statut == 'base-user') {
+        $_SESSION['base-user'] = true;
+        echo '<meta http-equiv="refresh" content="2;earth.php">';
+    } else {
+        
+    }
+
 
 
 

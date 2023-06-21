@@ -64,14 +64,19 @@
     text-decoration: none;
 
 }
+#filter-anim{
+  transition: transform 0.5s;
+}
 
+#filter-anim:hover{
+  color:#A17113;
+}
 #main-anim{
 
   transition: transform 0.5s;
 }
 
 #main-anim:hover{
-  transform: scale(1.2);
   color:#A17113;
 }
 
@@ -107,6 +112,30 @@
   background-position: center;
 }
 
+.under-picto {
+  font-size:15px;
+  margin-top: 10px; 
+  margin-left: -5px; 
+}
+
+.under-picto:hover {
+  font-size:15px;
+  margin-top: 10px; 
+  margin-left: -5px; 
+  color:#A17113;
+
+}
+
+.form-old:hover{
+  width: 40px;
+  height: 43px;
+  align-self: center;
+  background-image: url('assets/img/picto-compte.png');
+  background-size: cover;
+  background-position: center;
+}
+
+
 
 
 
@@ -122,9 +151,10 @@
         </div>
         <nav>
             <ul>
-                <div id="main-anim"> <li><a href="filter.php" class="filter">Recherche</a></li> </div>
+                <div> <li><a href="filter.php" class="filter" id="filter-anim">Recherche</a></li> </div>
                 <div id="main-anim"> <li><a href="discovery.php" class="discovery" id="main-anim">Découverte</a></li> </div>
                 <div id="main-anim"> <li><a href="earth.php" class="terre" id="main-anim">Terre</a></li> </div>
+
                 <?php 
                 if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
                   echo '<div id="main-anim"> <li><a href="admin.php" class="admin" id="main-anim">Admin</a></li> </div>';
@@ -136,6 +166,15 @@
                 <li>
                     <a href="form.php">
                       <div class="form-old" id="main-anim"></div>
+
+                      <?php 
+                      if (isset($_SESSION['loginID'])){
+                        echo '<div class="under-picto">' . $_SESSION['loginID'] . '</div>';
+
+                      }else{
+
+                      }
+                      ?>
                     </a>
                 </li>
             </ul>

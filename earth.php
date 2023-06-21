@@ -2,7 +2,15 @@
     session_start();
 	include_once('header.php'); 
     include_once('connect.php'); 
-	?>
+
+    if (((isset($_SESSION['admin']) && $_SESSION['admin'] === true))or((isset($_SESSION['base-user']) && $_SESSION['base-user'] === true))){
+
+} else {
+    header("Location: index.php");
+    exit();
+}
+
+?>
     
 <!DOCTYPE html>
 <html>
