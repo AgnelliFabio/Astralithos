@@ -80,6 +80,17 @@ body {
         <img src="assets/img/cyclone.png" alt="Votre Image" width="24" height="24">
             <span>Tornade</span>
         </button>
+
+        <button name="btn-4" class="btn-earth">
+        <img src="assets/img/tsunami.png" alt="Votre Image" width="24" height="24">
+            <span>Tsunami</span>
+        </button>
+
+        <button name="btn-5" class="btn-earth">
+        <img src="assets/img/volcan-icon.png" alt="Votre Image" width="24" height="24">
+            <span>Volcan</span>
+        </button>
+
     </div>
 </form>
 
@@ -95,6 +106,14 @@ if (isset($_POST['btn-2'])) {
 
 if (isset($_POST['btn-3'])) {
     include_once('earth-3.php'); 
+}
+
+if (isset($_POST['btn-4'])) {
+    include_once('earth-4.php'); 
+}
+
+if (isset($_POST['btn-5'])) {
+    include_once('earth-5.php'); 
 }
 ?>
 

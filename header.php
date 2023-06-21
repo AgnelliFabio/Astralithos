@@ -3,86 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title> 
+    <title>Astralithos</title> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-Astralithos-sans-fond.png">
 
+    <?php $imgPicto='assets/img/picto-compte-gris.png'; ?>
+
+    <?php
+        $currentPage = basename($_SERVER['PHP_SELF'], ".php");
+
+
+        if ($currentPage === "earth") echo "<style>.terre{color:#A17113;}</style>";
+        if ($currentPage === "filter") echo "<style>.filter{color:#A17113;}</style>";
+        if ($currentPage === "discovery") echo "<style>.discovery{color:#A17113;}</style>";
+        if ($currentPage === "form" ) $imgPicto='assets/img/picto-compte.png';
+        if ($currentPage === "oublie-password" ) $imgPicto='assets/img/picto-compte.png';
+    ?>
 
     <style>
-  header {
-    background-color: #384967;
-    border-radius: 100px;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff;
-  }
+        header {
+            background-color: #384967;
+            border-radius: 100px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
 
-  .logo-header img {
-    width: 100%;
-    height: 60px;
-    margin-left: 10px; /* Ajout de la marge à gauche */
-    align-items: center; /* Centrer verticalement les éléments */
-  }
+        .logo-header img {
+            width: 100%;
+            height: 60px;
+            margin-left: 10px;
+            align-items: center;
+        }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    margin-right: 10px;
-    align-items: center; /* Centrer verticalement les éléments */
-    font-family: 'Poppins', 'sans-serif';
-    font-weight: 700;
-  }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            margin-right: 10px;
+            align-items: center;
+            font-family: 'Poppins', 'sans-serif';
+            font-weight: 700;
+        }
 
-  nav ul li {
-    margin-right: 30px;
-  }
+        nav ul li {
+            margin-right: 30px;
+        }
 
-  nav ul li a {
+        nav ul li a {
     color: #fff;
     text-decoration: none;
-    
-  }
 
-  .profile-icon a {
-    display: flex;
-    text-decoration: none;
-    align-items: center; /* Centrer verticalement les éléments */
-  }
+}
 
-  .profile-icon a::before {
-    content: "\f007";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    margin-right: 5px;
-  }
-</style>
+#main-anim{
 
+  transition: transform 0.5s;
+}
+
+#main-anim:hover{
+  transform: scale(1.2);
+  color:#A17113;
+}
+
+
+
+        .profile-icon a {
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+        }
+
+        .profile-icon a::before {
+            content: "\f007";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 5px;
+        }
+
+        .header-title {
+            color: black;
+        }
+
+        .header-title.terre {
+            color: red;
+        }
+
+        .form-old {
+  width: 40px;
+  height: 43px;
+  align-self: center;
+  background-image: url('<?php echo $imgPicto;?>');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+
+    </style>
 </head>
 <body>
-<header>
-
-
-  <div class="logo-header"> <a href="index.php">
-    <img src="assets/img/logo-Astralithos-sans-fond.png" alt="Logo">
-  </div>
-  <nav>
-    <ul>
-      <li><a href="filter.php">Recherche</a></li>
-      <li><a href="#">Découverte</a></li>
-      <li><a href="earth.php">Terre</a></li>
-      <li><a href="form.php"><img src="assets/img/picto-compte-gris.png" style="width: 30px;
-    height: 30px; align-items: center;"></a></li>
-    </ul>
-  </nav>
-</header>
+    <header>
+        <div class="logo-header">
+            <a href="index.php">
+                <img src="assets/img/logo-Astralithos-sans-fond.png" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <div id="main-anim"> <li><a href="filter.php" class="filter">Recherche</a></li> </div>
+                <div id="main-anim"> <li><a href="discovery.php" class="discovery" id="main-anim">Découverte</a></li> </div>
+                <div id="main-anim"> <li><a href="earth.php" class="terre" id="main-anim">Terre</a></li> </div>
+                <li>
+                    <a href="form.php">
+                      <div class="form-old" id="main-anim"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
 </body>
 </html>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-    <title>Document</title>
+    <title>Astralithos</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-Astralithos-sans-fond.png">
 
     <style>
         body {

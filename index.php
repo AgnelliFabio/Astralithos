@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Astralithos</title>
 
     <link rel="stylesheet" type="text/css" href="style/style-home.css">
        
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo-Astralithos-sans-fond.png">
 
     <style>
     .parallax-one {
@@ -79,11 +80,11 @@
 
 
   
-  <button class="btn" type="button">
-  <strong>DÉCOUVRIR</strong>
+  <button class="btn" type="button" onclick="window.location.href = 'discovery.php';">  <strong>DÉCOUVRIR</strong>
   <div id="container-stars">
     <div id="stars"></div>
-  </div>
+  </div></button>
+
 
   <div id="glow">
     <div class="circle"></div>
@@ -276,11 +277,11 @@ strong {
                     <img src="assets/img/earth.gif" alt="Terre en rotation" class="earth2">
                       <div class="text-connect">Connectez-vous pour accéder à la section "Terre"</div>
                   
-                      <button class="btn" type="button">
-                    <strong>CONNEXION</strong>
+                      <button class="btn" type="button" onclick="window.location.href = 'form.php';">
+                    <strong> CONNEXION</strong>
                       <div id="container-stars">
                         <div id="stars"></div>
-                      </div>
+                      </div></button>
 
   <div id="glow">
     <div class="circle"></div>
