@@ -110,7 +110,8 @@ while($row = mysqli_fetch_array($resultat, MYSQLI_ASSOC))
 </table>
 </div>
 <?php
-mysqli_close($conn) or die(mysqli_error($conn));?>
+mysqli_close($conn) or die(mysqli_error($conn));
+?>
 
 </body>
 </html>
