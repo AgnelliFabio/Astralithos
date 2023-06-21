@@ -87,8 +87,8 @@ body {
         </button>
 
         <button name="btn-3" class="btn-earth">
-        <img src="assets/img/cyclone.png" alt="Votre Image" width="24" height="24">
-            <span>Tornade</span>
+        <img src="assets/img/liste.png" alt="Votre Image" width="24" height="24">
+            <span>Liste Utilisateur</span>
         </button>
 
         <button name="btn-4" class="btn-earth">
@@ -125,7 +125,7 @@ if (isset($_POST['btn-2'])) {
 }
 
 if (isset($_POST['btn-3'])) {
-    include_once('earth-3.php'); 
+    include_once('list-users.php'); 
 }
 
 if (isset($_POST['btn-4'])) {
