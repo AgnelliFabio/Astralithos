@@ -68,9 +68,9 @@
     </section>
 
     <?php
-        // Vérifier si le formulaire a été soumis
+      
         if (isset($_POST['submit'])) {
-            // Récupération des valeurs du formulaire
+          
 			$nom = htmlspecialchars($_POST['nom']);
 			$prenom = htmlspecialchars($_POST['prenom']);
             $email = htmlspecialchars($_POST['email']);
@@ -81,8 +81,8 @@
 				$password = htmlspecialchars($_POST['pass']);
 			} else {
 				echo '<p style="color: white;">Vérification du mot de passe incorrect</p>';
-				// Ajoutez ici une logique supplémentaire si nécessaire, comme une redirection vers une autre page ou l'affichage d'un message d'erreur.
-				exit; // Arrête l'exécution du script après l'affichage du message d'erreur.
+				
+				exit; 
 			}
 			
 
@@ -106,8 +106,6 @@
 						$numquest = 4;
 						break;
 					default:
-						// Gérer le cas où aucune question n'est sélectionnée ou la valeur n'est pas valide.
-						// Vous pouvez afficher un message d'erreur ou définir une valeur par défaut pour $numquest.
 						break;
 				}
 			}
@@ -135,14 +133,9 @@
 				exit;
 			}
 			
-			// ... le reste du code pour ajouter l'utilisateur dans la base de données
-			
-			
 			$admin= 'base-user';
 
             $passEncode = md5($password . '$x21**');
-
-
 
             // Connexion à la base de données
             global $servername,$username,$pwdBDD,$dbname;
@@ -161,11 +154,6 @@
         }
     ?>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<?php 
-	include_once('footer.php'); 
-	?>
-    </body>
-    </html>
 
 
 
@@ -201,15 +189,15 @@ function estAdmin($pseudo)
 }
 
 
-function loginPassOk($login, $password)
+function loginPassOk($login, $passEncodeConect)
 {
     global $servername, $username, $pwdBDD, $dbname;
     $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
-    $hashedPassword = md5($password . '$x21**');
+
     $requete = "SELECT COUNT(*) as nb FROM form WHERE email = ? AND password = ?";
     $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-    mysqli_stmt_bind_param($statement, "ss", $login, $hashedPassword) or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($statement, "ss", $login, $passEncodeConect) or die(mysqli_error($conn));
     mysqli_stmt_execute($statement) or die(mysqli_error($conn));
 
     $resultat = mysqli_stmt_get_result($statement);
@@ -223,15 +211,14 @@ function loginPassOk($login, $password)
 
 if (isset($_POST['login']) && isset($_POST['pwd'])) {
     $login = htmlspecialchars($_POST['login']);
-    $password = htmlspecialchars($_POST['pwd']);
+    $pwd = htmlspecialchars($_POST['pwd']);
 
-    if (loginPassOk($login, $password)) {
+    $passEncodeConect= md5($pwd . '$x21**');
+
+    if (loginPassOk($login, $passEncodeConect)) {
         echo '<p style="font-size: 24px; color: white;">Vous êtes connecté</p>';
-        $_SESSION['admin'] = true;
-        echo '<meta http-equiv="refresh" content="2;admin.php">';
     } else {
         echo '<p style="font-size: 24px; color: white;">Email ou mot de passe incorrect</p>';
-        $_SESSION['user'] = true;
     }
 }
 
@@ -241,38 +228,40 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 global $servername,$username,$pwdBDD,$dbname;
 $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
-// Préparation de la requête
 $requete = "SELECT admin FROM form WHERE email = ? AND password = ?";
 $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-
-// Liaison des paramètres à la requête préparée
 mysqli_stmt_bind_param($statement, "ss", $login,$passEncodeConect ) or die(mysqli_error($conn));
-
-// Exécution de la requête
 mysqli_execute($statement) or die(mysqli_error($conn));
-
-// Récupération du résultat de la requête
 $resultat = mysqli_stmt_get_result($statement);
 
-// Vérification du résultat
 if (mysqli_num_rows($resultat) > 0) {
-    // Récupération de la valeur de la colonne "admin"
     $row = mysqli_fetch_assoc($resultat);
     $statut = $row['admin'];
 } else {
-    // Aucune correspondance trouvée, la variable $statut aura une valeur par défaut
     $statut = "";
 }
 
 
 mysqli_close($conn) or die(mysqli_error($conn));
 
-// Utilisation de la variable $statut dans votre code
-// ...
+echo $statut;
+
+
+
+    if ($statut == 'admin') {
+        $_SESSION['admin'] = true;
+        echo '<meta http-equiv="refresh" content="2;admin.php">';
+    } else {
+        $_SESSION['user'] = true;
+    }
+    
 
 
 
 
+
+
+	include_once('footer.php'); 
 
 ?>
 
