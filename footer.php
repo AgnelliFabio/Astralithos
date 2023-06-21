@@ -40,6 +40,9 @@
         text-align: center;
     }
 
+    .font-footer{
+        font-family:poppins;
+    }
 
     .Btn {
   display: flex;
@@ -193,7 +196,7 @@ if ((isset($_SESSION['admin']) && $_SESSION['admin'] === true) && (isset ($_SESS
 
 
     <div class="footer-bottom">
-        <p>&copy; <?php echo date("Y"); ?> Astralithos. Tous droits réservés.</p>
+        <p class="font-footer">&copy; <?php echo date("Y");?> Astralithos. Tous droits réservés.</p>
     </div>
 
 

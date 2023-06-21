@@ -80,11 +80,11 @@
 
 
   
-  <button class="btn" type="button">
-  <strong>DÉCOUVRIR</strong>
+  <button class="btn" type="button" onclick="window.location.href = 'discovery.php';">  <strong>DÉCOUVRIR</strong>
   <div id="container-stars">
     <div id="stars"></div>
-  </div>
+  </div></button>
+
 
   <div id="glow">
     <div class="circle"></div>
@@ -277,11 +277,11 @@ strong {
                     <img src="assets/img/earth.gif" alt="Terre en rotation" class="earth2">
                       <div class="text-connect">Connectez-vous pour accéder à la section "Terre"</div>
                   
-                      <button class="btn" type="button">
-                    <strong>CONNEXION</strong>
+                      <button class="btn" type="button" onclick="window.location.href = 'form.php';">
+                    <strong> CONNEXION</strong>
                       <div id="container-stars">
                         <div id="stars"></div>
-                      </div>
+                      </div></button>
 
   <div id="glow">
     <div class="circle"></div>
