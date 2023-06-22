@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="checkbox" class="toggle">
         <div class="flip-card__inner">
             <div class="flip-card__front">
-                <div class="title">Ajout admin</div>
+                <div class="title">Modification données Utilisateur</div>
                 <form class="flip-card__form" method="post">
                 <input type="hidden" name="filtre" value="modif-user">
                     <label for="email">Sélectionnez un compte :</label>
@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo '<script>
                         setTimeout(function() {
                             alert("Utilisateur '.$email.'bien modifier");
-                        }, 1);
+                        }, 500);
                     </script>';
             
                         mysqli_close($conn) or die(mysqli_error($conn));
