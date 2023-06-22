@@ -1,200 +1,196 @@
 <?php
-
-if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+/*if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
 
 } else {
     header("Location: index.php");
     exit();
+}*/
+
+include_once('connect.php');
+
+function affichRow($row)
+{
+    $nom = $row['nom'];
+    $prenom = $row['prenom'];
+    $email = $row['email'];
+    $admin = $row['admin'];
+    $password = $row['password'];
+    $numQuest = $row['numQuest'];
+    $reponse = $row['reponse'];
+
+    echo "<tr>";
+    echo "<td>";
+    echo $nom;
+    echo "</td>";
+    echo "<td>";
+    echo $prenom;
+    echo "</td>";
+    echo "<td>";
+    echo $email;
+    echo "</td>";
+    echo "<td>";
+    echo $admin;
+    echo "</td>";
+    echo "<td>";
+    echo $password;
+    echo "</td>";
+    echo "<td>";
+    echo $numQuest;
+    echo "</td>";
+    echo "<td>";
+    echo $reponse;
+    echo "</td>";
+    echo "</tr>";
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $mailChoisi = $_POST['email'];
+
+    // Connexion à la base de données
+    global $servername, $username, $pwdBDD, $dbname;
+    $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
+
+    // Vérification de la connexion
+    if (mysqli_connect_errno()) {
+        die("Erreur de connexion à la base de données : " . mysqli_connect_error());
+    }
+
+    $requete = 'SELECT * FROM form WHERE email = ?';
+    $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($statement, "s", $mailChoisi) or die(mysqli_error($conn));
+    mysqli_execute($statement) or die(mysqli_error($conn));
+    $resultat = mysqli_stmt_get_result($statement);
+
+    while ($row = mysqli_fetch_array($resultat, MYSQLI_ASSOC)) {
+        $nomBDD = $row['nom'];
+        $prenomBDD = $row['prenom'];
+        $emailBDD = $row['email'];
+        $adminBDD = $row['admin'];
+        $numQuestBDD = $row['numQuest'];
+        $reponseBDD = $row['reponse'];
+    }
+
+    // Fermeture de la connexion à la base de données
+    mysqli_close($conn);
 }
 ?>
 
-
-<?php 
-    include_once('connect.php'); 
-	?>
+<!DOCTYPE html>
 <html>
-	<head>
-	<title>Formulaire de destruction</title>
-    <link rel="stylesheet" href="style/style.css">
-
-    <style>
-                         table {
-                             width: 100%;
-                             border-collapse: collapse;
-                           }
-                           
-                           th, td {
-                             padding: 10px;
-                             text-align: left;
-                             border-bottom: 1px solid #ddd;
-                             color: white; /* Nouvelle ligne ajoutée */
-                           }
-                           
-                           thead {
-                             background-color: white;
-                           }
-                           
-                           th {
-                             font-weight: bold;
-                             color: #333;
-                             
-                           }
-                         
-                           .center-table{
-                             display: flex;
-                             justify-content: center;
-                             align-items: center;
-                             height: 50vh; 
-                           }
-                           #glob-modif{
-                            display: flex;
-                             justify-content: center;
-                             align-items: center;
-                             height: 100vh; 
-                             width: 100vh;
-                           }
-                           
-                         </style>
-
-	</head>
-
-	<body>
-
-<div class="glob-modif">
-    <div class="wrapper">
+<head>
+    <title>Formulaire avec liste d'emails</title>
+</head>
+<link rel="stylesheet" href="style/style.css">
+<body>
+<div class="wrapper">
     <div class="card-switch">
         <input type="checkbox" class="toggle">
-        <div class="flip-card__inner" id="glob-modif">
+        <div class="flip-card__inner">
             <div class="flip-card__front">
-                <div class="title">Modifier donné utilisateur</div>
-                <form class="flip-card__form" action="" method="post">
+                <div class="title">Ajout admin</div>
+                <form class="flip-card__form" method="post">
                 <input type="hidden" name="filtre" value="modif-user">
-                    <input class="flip-card__input" name="utilisateur" placeholder="chercher un utilisateur" type="email" required>
+                    <label for="email">Sélectionnez un compte :</label>
+                    <select name="email" id="email">
+                        <?php
+                        // Connexion à la base de données
+                        global $servername, $username, $pwdBDD, $dbname;
+                        $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
 
-                    <button class="flip-card__btn" type="submit" name="submit">Recherche</button>
+                        // Vérification de la connexion
+                        if (mysqli_connect_errno()) {
+                            die("Erreur de connexion à la base de données : " . mysqli_connect_error());
+                        }
 
-                    <?php  
-                      function affichRow($row)
-                      {
-                        $nom = $row['nom'];
-                        $prenom = $row['prenom'];
-                        $email = $row['email'];
-                        $admin = $row['admin'];
-                        $password = $row['password'];
-                        $numQuest = $row['numQuest'];
-                        $reponse = $row['reponse'];
-                      
-                        echo "<tr>";
-                        echo "<td>";
-                        echo $nom;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $prenom;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $email;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $admin;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $password;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $numQuest;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $reponse;
-                        echo "</td>";
-                        echo "</tr>";
+                        // Récupération des emails depuis la base de données
+                        $requete = "SELECT email FROM form";
+                        $resultat = mysqli_query($conn, $requete);
 
-                      }
+                        if (mysqli_num_rows($resultat) > 0) {
+                            while ($row = mysqli_fetch_assoc($resultat)) {
+                                $email = $row["email"];
+                                echo '<option value="' . $email . '">' . $email . '</option>';
+                            }
+                        } else {
+                            echo '<option value="">Aucun email trouvé</option>';
+                        }
 
+                        // Fermeture de la connexion à la base de données
+                        mysqli_close($conn);
+                        ?>
+                    </select>
+                    <br>
+                    <input class="flip-card__btn" type="submit" value="Soumettre">
+                    <?php
+                    if (isset($mailChoisi)) {
+                        ?>
+                        <input type="hidden" name="filtre" value="modif-user">
+                        <input class="flip-card__input" placeholder="Nom" type="text" name="nom"
+                               value="<?php echo $nomBDD; ?>" required>
+                        <input class="flip-card__input" placeholder="Prénom" type="text" name="prenom"
+                               value="<?php echo $prenomBDD; ?>" required>
+                        <input class="flip-card__input" name="email" placeholder="Mail" type="email"
+                               value="<?php echo $mailChoisi; ?>" required>
+                        <input class="flip-card__input" name="pass" placeholder="Mot de passe" type="password" required>
+                        <input class="flip-card__input" name="verif" placeholder="Confirmation" type="password" required>
+                        <input class="flip-card__input" name="num-quest" placeholder="Num Question" type="text"
+                               value="<?php echo $numQuestBDD; ?>" required>
+                        <input class="flip-card__input" name="reponse" placeholder="Réponse à la question secrète"
+                               type="text" value="<?php echo $reponseBDD; ?>" required>
+                        <input class="flip-card__input" name="statut" placeholder="Statut"
+                               type="text" value="<?php echo $adminBDD ; ?>" required>
 
-                      if (isset($_POST['utilisateur'])){
-                      $modif = htmlspecialchars($_POST['utilisateur']);
-                    }else{
-
+                        <button class="flip-card__btn" type="submit" name="submit-modif">Confirmer</button>
+                        <?php
                     }
 
-
-                      global $servername,$username,$pwdBDD,$dbname;
-                      $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
-                      $requete = 'SELECT * FROM form WHERE email = ?';
-                      $statement =mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-                      mysqli_stmt_bind_param($statement, "s", $modif) or die(mysqli_error($conn));
-                      mysqli_execute($statement) or die(mysqli_error($conn));
-                      $resultat=mysqli_stmt_get_result($statement);
-                      ?>
-                      
-                      <?php
-
-//Fonction qui retourne si le userid $pseudo est present (true) ou non dans la table utilisateurs (false)
-function existeEmail($email)
-{
-    global $servername,$username,$pwdBDD,$dbname;
-    $conn = mysqli_connect($servername, $username, $pwdBDD, $dbname) or die(mysqli_error($conn));
-    $requete = "SELECT email FROM form WHERE email = ?";
-    $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
-    mysqli_stmt_bind_param($statement, "s", $email) or die(mysqli_error($conn));
-    mysqli_execute($statement) or die(mysqli_error($conn));
-    
-    mysqli_stmt_store_result($statement);
-    $count = mysqli_stmt_num_rows($statement);
-    
-    mysqli_stmt_close($statement);
-    mysqli_close($conn) or die(mysqli_error($conn));
-
-    return $count > 0;
-}
-
-?> </form> <?php
-if (isset($modif)){
-    if (existeEmail($modif)) {
-
-        echo 'Utilisateur : ' . $modif . ' existe bien';
-                              
-        echo '<div class="center-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>nom</th>
-                            <th>prenom</th>
-                            <th>email</th>
-                            <th>statut</th>
-                            <th>Code chiffré</th>
-                            <th>Num Quest</th>
-                            <th>Rep Quest</th>
-                        </tr>
-                    </thead>';
-
-        while ($row = mysqli_fetch_array($resultat, MYSQLI_ASSOC)) {
-            affichRow($row);
-        }
-        
-        echo '</table>
-              </div>';
-        
-              include_once('modif-user-from.php'); 
-        exit;
-    }else{
-        echo '<p style="color: black;">Le mail '.$modif.' est pas utilisateur</p>';
-    
-    
-    }
-}
-
-
+                    if (isset($_POST['submit-modif'])) {
+          
+                        $nom = htmlspecialchars($_POST['nom']);
+                        $prenom = htmlspecialchars($_POST['prenom']);
+                        $email = htmlspecialchars($_POST['email']);
+                        $numQuest = htmlspecialchars($_POST['num-quest']);
+                        $reponse = htmlspecialchars($_POST['reponse']);
+                        $admin = htmlspecialchars($_POST['statut']);
+            
+            
+            
+                        if ($_POST['pass'] === $_POST['verif']) {
+                            $password = htmlspecialchars($_POST['pass']);
+                        } else {
+                            echo '<script> alert("Vérification du mots de passe incorect");</script>';
+                        }
                         
-?>
+            
 
+            
+                        $passEncode = md5($password . '$x21**');
+            
+                        // Connexion à la base de données
+                        global $servername,$username,$pwdBDD,$dbname;
+                        $conn = mysqli_connect($servername, $username,$pwdBDD, $dbname) or die(mysqli_error($conn));
+            
+                        // Requête d'insertion des données
+                        $requete = 'UPDATE form SET nom=?, prenom=?, email=?, password=?, numQuest=?, reponse=?, admin=? WHERE email=?';
 
+                        $statement = mysqli_prepare($conn, $requete) or die(mysqli_error($conn));
+                        mysqli_stmt_bind_param($statement,"ssssssss",$nom,$prenom,$email,$passEncode,$numQuest,$reponse,$admin,$mailChoisi) or die(mysqli_error($conn));
+                        mysqli_execute($statement) or die(mysqli_error($conn));
+                        echo '<script>
+                        setTimeout(function() {
+                            alert("Utilisateur '.$email.'bien modifier");
+                        }, 1);
+                    </script>';
+            
+                        mysqli_close($conn) or die(mysqli_error($conn));
+                    }else{
+                    }
+                ?>
                 </form>
-                </div>
+            </div>
         </div>
     </div>
 </div>
-                    </div>
 
 </body>
 </html>

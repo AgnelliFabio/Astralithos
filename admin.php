@@ -117,9 +117,6 @@ if (isset($_POST ['filtre'])){
     if (($_POST['filtre']) == 'modif-user') {
         include_once('modif-user.php'); 
     }
-    if (($_POST['filtre']) == 'form-modif') {
-        include_once('modif-user-from.php'); 
-    }
 }
 if (isset($_POST['btn-1'])) {
     include_once('ajout-admin.php'); 
